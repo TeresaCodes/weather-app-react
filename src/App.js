@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import Search from "./Search.js";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <h1>Weather App</h1>
+      <Search />
+      <br />
+      <footer>
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/TeresaCodes/weather-app-react"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer"
         >
-          Learn React
-        </a>
-      </header>
+          Open-source code
+        </a>{" "}
+        by <em>Teresa</em>
+      </footer>
     </div>
   );
 }
-
-export default App;
