@@ -1,11 +1,11 @@
 import "./styles.css";
-import Search from "./Search.js";
+import Weather from "./Weather.js";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Weather App</h1>
-      <Search />
+      <h1>Weather App React</h1>
+      <Weather />
       <br />
       <footer>
         <a
