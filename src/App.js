@@ -1,11 +1,12 @@
 import "./styles.css";
-import Weather from "./Weather.js";
+import WeatherSearch from "./WeatherSearch.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Weather App React</h1>
-      <Weather />
+    <div className="App container">
+      <h1 className="mt-5">Weather App React</h1>
+      <WeatherSearch />
       <br />
       <footer>
         <a
