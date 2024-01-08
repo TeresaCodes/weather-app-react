@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function WeatherTemperature(props) {
   const [tempUnit, setTempUnit] = useState("celsius");
-  const [temperature, setTemperature] = useState(props.temperature);
+  const [temperature, setTemperature] = useState(Math.round(props.temperature));
+
+  useEffect(() => {
+    if (tempUnit === "celsius") {
+      setTemperature(Math.round(props.temperature));
+    }
+  }, [props.temperature, tempUnit]);
 
   function changeUnitToFahrenheit() {
     setTempUnit("fahrenheit");

@@ -6,6 +6,19 @@ export default function WeatherData(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   useEffect(() => {
+    function handleCityData(response) {
+      setWeatherData({
+        ready: true,
+        city: response.data.name,
+        temperature: Math.round(response.data.main.temp),
+        humidity: response.data.main.humidity,
+        wind: response.data.wind.speed,
+        icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+        description: response.data.weather[0].description,
+        date: response.data.dt,
+      });
+    }
+
     if (props.city) {
       const apiKey = "ff5efd6ccb32c688cc5cf4db3f84e813";
       const unit = "metric";
@@ -23,19 +36,6 @@ export default function WeatherData(props) {
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     return [days[day], hour, minute];
-  }
-
-  function handleCityData(response) {
-    setWeatherData({
-      ready: true,
-      city: response.data.name,
-      temperature: Math.round(response.data.main.temp),
-      humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      description: response.data.weather[0].description,
-      date: formatDay(response.data.dt),
-    });
   }
 
   if (props.city) {
@@ -56,8 +56,9 @@ export default function WeatherData(props) {
             <div className="row row-cols-1">
               <div className="col-md-auto">
                 <span className="current-time">
-                  Last updated: {weatherData.date[0]}, {weatherData.date[1]}:
-                  {weatherData.date[2]}
+                  Last updated: {formatDay(weatherData.date)[0]},{" "}
+                  {formatDay(weatherData.date)[1]}:
+                  {formatDay(weatherData.date)[2]}
                 </span>
               </div>
             </div>
