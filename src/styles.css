@@ -3,6 +3,57 @@
   text-align: center;
 }
 
-.Weather.Weather {
-  margin-top: 20px;
+body {
+  background: rgb(248, 248, 248);
+}
+
+a {
+  text-decoration: none;
+}
+
+.WeatherData {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgb(252, 252, 252);
+  padding: 30px 50px 30px 50px;
+
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 4px;
+}
+
+.city-name {
+  display: inline;
+  margin-right: 10px;
+}
+
+.weather-description {
+  font-style: italic;
+}
+
+.current-time {
+  font-size: smaller;
+}
+
+.weather-icon {
+  padding: 0;
+}
+
+.icon {
+  filter: brightness(0.75);
+  position: relative;
+  top: -15px;
+}
+
+.temperature {
+  font-size: 5em;
+  line-height: 1;
+}
+
+.units {
+  position: relative;
+  top: -45px;
+}
+
+.other-view {
+  font-size: smaller;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import WeatherTemperature from "./WeatherTemperature.js";
 
 export default function WeatherData(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -31,7 +32,7 @@ export default function WeatherData(props) {
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
       date: formatDay(response.data.dt),
     });
@@ -40,38 +41,39 @@ export default function WeatherData(props) {
   if (props.city) {
     return (
       <div className="WeatherData">
-        <div className="header">
-          <div className="row">
+        <div className="header mb-4">
+          <div className="row row-cols-1">
             <div className="col-md-auto">
-              <h2>{weatherData.city}</h2>
+              <h2 className="city-name">{weatherData.city}</h2>
             </div>
-            <div className="row">
-              <div className="col-md-auto">{weatherData.description}</div>
+            <div className="row row-cols-1">
+              <div className="col-md-auto">
+                <span className="weather-description">
+                  {weatherData.description}
+                </span>
+              </div>
             </div>
-            <div className="row">
-              <div className="col-md-auto">Last updated:</div>
+            <div className="row row-cols-1">
+              <div className="col-md-auto">
+                <span className="current-time">
+                  Last updated: {weatherData.date[0]}, {weatherData.date[1]}:
+                  {weatherData.date[2]}
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="row">
-          <div className="col">
-            <img src={weatherData.icon} alt={weatherData.description} />
+          <div className="col weather-icon">
+            <img
+              className="icon"
+              src={weatherData.icon}
+              alt={weatherData.description}
+            />
           </div>
-          <div className="col">
-            {weatherData.temperature}
-
-            <sup>
-              <a href="#" rel="noopener noreferrer">
-                °C
-              </a>
-              |
-              <a href="#" rel="noopener noreferrer">
-                °F
-              </a>
-            </sup>
-          </div>
-          <div className="col">
+          <WeatherTemperature temperature={weatherData.temperature} />
+          <div className="col other-view">
             Humidity: {weatherData.humidity} %
             <br />
             Wind: {weatherData.wind} m/s
@@ -80,6 +82,6 @@ export default function WeatherData(props) {
       </div>
     );
   } else {
-    return <div className="WeatherData">Waiting on input...</div>;
+    return <div className="WeatherData">Please enter a City...</div>;
   }
 }
