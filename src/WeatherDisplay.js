@@ -5,7 +5,7 @@ export default function WeatherDisplay(props) {
   if (props.weatherData.ready) {
     return (
       <div className="WeatherData mt-3">
-        <div className="header mb-4">
+        <div className="header">
           <div className="row row-cols-1">
             <div className="col-md-auto">
               <h2 className="city-name">{props.weatherData.city}</h2>
@@ -27,7 +27,7 @@ export default function WeatherDisplay(props) {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row mt-4">
           <div className="col weather-icon">
             <img
               className="icon"
@@ -38,7 +38,7 @@ export default function WeatherDisplay(props) {
           <div className="WeatherTemperature col-6 temperature-view">
             <span className="temperature">{props.weatherData.temperature}</span>
             <span className="units ms-2">
-              <sup>°C | °F</sup>
+              <sup>°C</sup>
             </span>
           </div>
           <div className="col other-view">

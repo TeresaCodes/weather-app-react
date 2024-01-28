@@ -21,6 +21,22 @@ a {
   border-radius: 4px;
 }
 
+.WeatherData-Forecast {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgb(252, 252, 252);
+  padding: 20px 50px 20px 50px;
+
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 4px;
+}
+
+.forecast {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
 .city-name {
   display: inline;
   margin-right: 10px;
@@ -42,6 +58,10 @@ a {
   filter: brightness(0.75);
   position: relative;
   top: -15px;
+}
+
+.icon-forecast {
+  filter: brightness(0.75);
 }
 
 .temperature {
